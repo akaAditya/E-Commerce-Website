@@ -1,5 +1,5 @@
 import React from "react";
-import { Col, Container, Row } from "react-bootstrap";
+import { Button, Col, Container, Row } from "react-bootstrap";
 import Card from "react-bootstrap/Card";
 
 const productsArr = [
@@ -44,6 +44,7 @@ const Cards = () => {
                     <Card.Img variant="top" src={product.imageUrl} />
                     <Card.Title>{product.title}</Card.Title>
                     <Card.Text>{product.price}</Card.Text>
+                    <Button>Add to Cart</Button>
                   </div>
                 </Card.Body>
               </Card>
