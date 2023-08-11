@@ -32,27 +32,27 @@ const productsArr = [
 const Cards = () => {
   return (
     <React.Fragment>
-<Container className="d-flex justify-content-sm-between">
-      {productsArr.map((product) => {
-        return (
-    <Container className="mt-4">
-          <Row>
-            <Col md={6} xs={4}>
-              <Card style={{ width: "18rem" }} className="shadow-lg p-4">
-                <Card.Body>
-                  <div key={product.id}>
-                    <Card.Img variant="top" src={product.imageUrl} />
-                    <Card.Title>{product.title}</Card.Title>
-                    <Card.Text>{product.price}</Card.Text>
-                    <Button>Add to Cart</Button>
-                  </div>
-                </Card.Body>
-              </Card>
-            </Col>
-          </Row>
-    </Container>
-        );
-      })}
+      <Container className="d-flex justify-content-sm-between">
+        {productsArr.map((product) => {
+          return (
+            <Container className="mt-4">
+              <Row>
+                <Col md={6} xs={4}>
+                  <Card style={{ width: "18rem" }} className="shadow-lg p-4">
+                    <Card.Body>
+                      <div key={product.id}>
+                        <Card.Img variant="top" src={product.imageUrl} />
+                        <Card.Title>{product.title}</Card.Title>
+                        <Card.Text>{product.price}</Card.Text>
+                        <Button>Add to Cart</Button>
+                      </div>
+                    </Card.Body>
+                  </Card>
+                </Col>
+              </Row>
+            </Container>
+          );
+        })}
       </Container>
     </React.Fragment>
   );
