@@ -1,25 +1,25 @@
-import React, { useState } from 'react';
-import NavBar from './components/navbar/Navbar'
-import Section1 from './components/main/Section1';
-import Cart from './components/cart/Cart';
-
+import React, { useState } from "react";
+import NavBar from "./components/navbar/Navbar";
+import Section1 from "./components/main/Section1";
+import Cart from "./components/cart/Cart";
+import CartProvider from "./store/CartProvider";
 
 function App() {
-  const [isItemShow, setIsItemShow] = useState(false)
+  const [isItemShow, setIsItemShow] = useState(false);
 
-  const showCartItemHandler = () =>{
-    setIsItemShow(true)
-  }
+  const showCartItemHandler = () => {
+    setIsItemShow(true);
+  };
 
-  const hideCartItemHandler = () =>{
-    setIsItemShow(false)
-  }
+  const hideCartItemHandler = () => {
+    setIsItemShow(false);
+  };
   return (
-    <div>
-      <NavBar onShow={showCartItemHandler}/>
+    <CartProvider>
+      {isItemShow && <Cart onHide={hideCartItemHandler} />}
+      <NavBar onShow={showCartItemHandler} />
       <Section1 />
-      {isItemShow && <Cart onHide={hideCartItemHandler}/>}
-    </div>
+    </CartProvider>
   );
 }
 

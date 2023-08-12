@@ -1,6 +1,7 @@
 import React from 'react'
 import { Col, Container, Row } from 'react-bootstrap'
-import Cards from '../cards/Cards'
+import Products from './Products'
+
 
 const Section1 = () => {
   return (
@@ -10,7 +11,9 @@ const Section1 = () => {
             <Col className='fs-1 text-center p-10 '  >The Generics</Col>
         </Row>
     </Container>
-    <Cards />
+    <Container>
+      <Products />
+    </Container>
     </React.Fragment>
   )
 }

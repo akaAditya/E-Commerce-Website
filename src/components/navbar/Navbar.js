@@ -1,10 +1,17 @@
 import React from "react";
+import { useContext } from "react";
 import Button from "react-bootstrap/Button";
 import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
+import CartContext from "../../store/cart-context";
 
 function NavBar(props) {
+  const cartContext = useContext(CartContext);
+  console.log(cartContext.items)
+  const numberOfCartItems = cartContext.items.reduce((curNumber, item) => {
+    return curNumber + item.amount;
+  }, 0);
   return (
     <Navbar bg="dark" expand="sm" variant="dark">
       <Container fluid>
@@ -23,6 +30,7 @@ function NavBar(props) {
           <Button onClick={props.onShow} variant="outline-success">
             Cart
           </Button>
+          <span style={{color:'white'}}>{numberOfCartItems}</span>
         </Navbar.Collapse>
       </Container>
     </Navbar>

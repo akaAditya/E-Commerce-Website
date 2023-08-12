@@ -1,72 +1,58 @@
 import React from "react";
-import { Button, Card, Container, Row, Col } from "react-bootstrap";
+import { Button, Card, Col, Container, Row } from "react-bootstrap";
 import Modal from "../UI/Modal";
+import { useContext } from "react";
+import CartContext from "../../store/cart-context";
 
-const cartElements = [
-  {
-    title: "Colors",
-
-    price: 100,
-
-    imageUrl: "https://prasadyash2411.github.io/ecom-website/img/Album%201.png",
-
-    quantity: 2,
-  },
-
-  {
-    title: "Black and white Colors",
-
-    price: 50,
-
-    imageUrl: "https://prasadyash2411.github.io/ecom-website/img/Album%202.png",
-
-    quantity: 3,
-  },
-
-  {
-    title: "Yellow and Black Colors",
-
-    price: 70,
-
-    imageUrl: "https://prasadyash2411.github.io/ecom-website/img/Album%203.png",
-
-    quantity: 1,
-  },
-];
 const Cart = (props) => {
+  const cartContext = useContext(CartContext);
+  const totalAmount = `$${cartContext.totalAmount.toFixed(2)}`;
+  const cartItemAddHandler = (item) => {
+    cartContext.addItems({ ...item, amount: 1 });
+  };
   const cartItems = (
-    <Container>
-      {cartElements.map((cartItems, index) => {
+    <Container className="d-flex justify-content-sm-between">
+      {cartContext.items.map((item) => {
         return (
-          <>
-            <Card.Body>
-              <div key={index}></div>
-              <Card.Img src={cartItems.imageUrl} />
-              <Card.Title>{cartItems.title}</Card.Title>
-              <Card.Text>{cartItems.price}</Card.Text>
-              <Card.Text>{cartItems.quantity}</Card.Text>
-              {console.log(cartItems)}
-              <Button>Remove</Button>
-            </Card.Body>
-          </>
+          <Row>
+            <Col>
+              <Card>
+                <Card.Body>
+                  <Card.Img src={item.image} class="img-fluid" />
+                  <Card.Title>{item.name}</Card.Title>
+                  <Card.Text>{item.price}</Card.Text>
+                  <Card.Text>{item.amount}</Card.Text>
+                  {/* <Button onClick={cartItemAddHandler.bind(null, item.id)}>
+                    +
+                  </Button> */}
+                  <button onClick={cartItemAddHandler.bind(null, item.id)}>
+                    +
+                  </button>
+                  {/* <Button onClick={cartItemRemoveHandler}>+</Button> */}
+                </Card.Body>
+              </Card>
+            </Col>
+          </Row>
         );
       })}
-      </Container>
+    </Container>
   );
-  console.log(cartItems);
 
   return (
     <Modal onHide={props.onHide}>
-      <Container className="mt-4">
-        <Row>
-          <Col md={6} xs={4}>
-            <Card style={{ width: "18rem" }} className="shadow-lg p-4">
-              {cartItems}
-              <Button onClick={props.onHide}>Close</Button>
-            </Card>
-          </Col>
-        </Row>
+      <Container>
+        <Card>
+          <Card.Body>
+            <Card.Text>{cartItems}</Card.Text>
+            <Card.Text>Total Amount</Card.Text>
+            <Card.Text>{totalAmount}</Card.Text>
+          </Card.Body>
+        </Card>
       </Container>
+
+      {/* <span>Total Amount</span>
+      <span>{totalAmount}</span> */}
+      <Button onClick={props.onHide}>Close</Button>
     </Modal>
   );
 };
