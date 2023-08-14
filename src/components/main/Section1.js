@@ -7,8 +7,8 @@ const Section1 = () => {
   return (
     <React.Fragment>
     <Container fluid>
-        <Row className='bg-secondary'>
-            <Col className='fs-1 text-center p-10 '  >The Generics</Col>
+        <Row className='bg-secondary mt-5 p-5'>
+            <Col className='fs-1 text-center'  >The Generics</Col>
         </Row>
     </Container>
     <Container>

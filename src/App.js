@@ -1,25 +1,21 @@
-import React, { useState } from "react";
+import React from "react";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import About from "./components/aboutUs/About";
+import Home from "./components/homePage/Home";
 import NavBar from "./components/navbar/Navbar";
-import Section1 from "./components/main/Section1";
-import Cart from "./components/cart/Cart";
-import CartProvider from "./store/CartProvider";
+
+const AboutPageRouter = createBrowserRouter([
+  { path: "/", element: <Home /> },
+  { path: "/about", element: <About /> },
+]);
 
 function App() {
-  const [isItemShow, setIsItemShow] = useState(false);
-
-  const showCartItemHandler = () => {
-    setIsItemShow(true);
-  };
-
-  const hideCartItemHandler = () => {
-    setIsItemShow(false);
-  };
   return (
-    <CartProvider>
-      {isItemShow && <Cart onHide={hideCartItemHandler} />}
-      <NavBar onShow={showCartItemHandler} />
-      <Section1 />
-    </CartProvider>
+    <React.Fragment>
+      <RouterProvider router={AboutPageRouter}>
+        <NavBar/>
+      </RouterProvider>
+    </React.Fragment>
   );
 }
 

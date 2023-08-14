@@ -5,15 +5,16 @@ import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import CartContext from "../../store/cart-context";
+import { NavLink } from "react-router-dom";
 
 function NavBar(props) {
   const cartContext = useContext(CartContext);
-  console.log(cartContext.items)
+  console.log(cartContext.items);
   const numberOfCartItems = cartContext.items.reduce((curNumber, item) => {
     return curNumber + item.amount;
   }, 0);
   return (
-    <Navbar bg="dark" expand="sm" variant="dark">
+    <Navbar className="fixed-top" bg="dark" expand="sm" variant="dark">
       <Container fluid>
         <Navbar.Brand href="#">JustSell</Navbar.Brand>
         <Navbar.Toggle aria-controls="navbarScroll" />
@@ -23,14 +24,41 @@ function NavBar(props) {
             style={{ maxHeight: "100px" }}
             navbarScroll
           >
-            <Nav.Link href="/">Home</Nav.Link>
-            <Nav.Link href="/store">Store</Nav.Link>
-            <Nav.Link href="/about">About</Nav.Link>
+            <NavLink
+              to="/"
+              style={{
+                color: "white",
+                textDecoration: "none",
+                padding: "5px",
+              }}
+            >
+              Home
+            </NavLink>
+            <NavLink
+              to="/store"
+              style={{
+                color: "white",
+                textDecoration: "none",
+                padding: "5px",
+              }}
+            >
+              Store
+            </NavLink>
+            <NavLink
+              to="/about"
+              style={{
+                color: "white",
+                textDecoration: "none",
+                padding: "5px",
+              }}
+            >
+              About
+            </NavLink>
           </Nav>
           <Button onClick={props.onShow} variant="outline-success">
             Cart
           </Button>
-          <span style={{color:'white'}}>{numberOfCartItems}</span>
+          <span style={{ color: "white" }}>{numberOfCartItems}</span>
         </Navbar.Collapse>
       </Container>
     </Navbar>

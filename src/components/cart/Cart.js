@@ -11,14 +11,14 @@ const Cart = (props) => {
     cartContext.addItems({ ...item, amount: 1 });
   };
   const cartItems = (
-    <Container className="d-flex justify-content-sm-between">
+    <Container className="d-flex justify-content-sm-between mt-5">
       {cartContext.items.map((item) => {
         return (
           <Row>
             <Col>
               <Card>
                 <Card.Body>
-                  <Card.Img src={item.image} class="img-fluid" />
+                  <Card.Img src={item.image} style={{width:'40px', height: '40px', }}/>
                   <Card.Title>{item.name}</Card.Title>
                   <Card.Text>{item.price}</Card.Text>
                   <Card.Text>{item.amount}</Card.Text>
@@ -28,7 +28,6 @@ const Cart = (props) => {
                   <button onClick={cartItemAddHandler.bind(null, item.id)}>
                     +
                   </button>
-                  {/* <Button onClick={cartItemRemoveHandler}>+</Button> */}
                 </Card.Body>
               </Card>
             </Col>
