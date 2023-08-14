@@ -16,7 +16,7 @@ const Cards = (props) => {
   };
   return (
     <React.Fragment>
-      <Container className="d-flex justify-content-sm-between">
+      <Container className="d-flex justify-content sm-between">
         <Container className="mt-4">
           <Row>
             <Col md={6} xs={4}>

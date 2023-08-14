@@ -1,6 +1,7 @@
 import React from "react";
 import Cards from "../cards/Cards";
 import UICard from "../UI/UICard";
+import { Card } from "react-bootstrap";
 
 const productsArr = [
   {
@@ -32,7 +33,7 @@ const Products = () => {
   return (
     <div>
       <UICard>
-        <ul>
+        <Card.Body>
           {productsArr.map((product) => (
             <Cards
               key={product.id}
@@ -42,7 +43,7 @@ const Products = () => {
               image={product.imageUrl}
             />
           ))}
-        </ul>
+        </Card.Body>
       </UICard>
     </div>
   );
