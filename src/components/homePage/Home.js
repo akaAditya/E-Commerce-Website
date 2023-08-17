@@ -1,14 +1,12 @@
 import React from "react";
 import { Button, Col, Container, Row, Table } from "react-bootstrap";
-import NavBar from "../navbar/Navbar";
 import Footer from "../footer/Footer";
 
 const Home = () => {
   return (
     <React.Fragment>
-      <NavBar />
       <Container fluid>
-        <Row className="bg-secondary mt-5 p-5 text-center">
+        <Row className="bg-secondary p-5 text-center">
           <Col className="fs-1 text-white">The Generics</Col>
         </Row>
         <Row className="bg-secondary p-5 text-center">
