@@ -6,6 +6,8 @@ import Store from "./components/store/Store";
 import Home from "./components/homePage/Home";
 import CartProvider from "./store/CartProvider";
 import ContactUs from "./components/contactUs/ContactUs";
+import ProductDetails from "./components/main/ProductDetails";
+
 
 // const AboutPageRouter = createBrowserRouter([
 //   { path: "/", element: <Home /> },
@@ -19,14 +21,17 @@ function App() {
       <CartProvider>
         <NavBar />
         <Switch>
-        <Route path="/contact-us">
+          <Route path="/contact-us">
             <ContactUs />
           </Route>
           <Route path="/about">
             <About />
           </Route>
-          <Route path="/store">
+          <Route path="/store" exact>
             <Store />
+          </Route>
+          <Route path={`/store/products-details/:productId/:info`}>
+            <ProductDetails />
           </Route>
           <Route path="/">
             <Home />
