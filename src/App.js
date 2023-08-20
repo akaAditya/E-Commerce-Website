@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import NavBar from "./components/navbar/Navbar";
 import { Switch, Route } from "react-router-dom";
 import About from "./components/aboutUs/About";
@@ -8,6 +8,8 @@ import CartProvider from "./store/CartProvider";
 import ContactUs from "./components/contactUs/ContactUs";
 import ProductDetails from "./components/main/ProductDetails";
 import AuthPage from "./components/Auth/AuthPage";
+import AuthContext from "./authContext/auth-context";
+import { Redirect } from "react-router-dom/cjs/react-router-dom.min";
 
 // const AboutPageRouter = createBrowserRouter([
 //   { path: "/", element: <Home /> },
@@ -16,6 +18,7 @@ import AuthPage from "./components/Auth/AuthPage";
 // ]);
 
 function App() {
+  const authCtx = useContext(AuthContext);
   return (
     <React.Fragment>
       <CartProvider>
@@ -31,7 +34,8 @@ function App() {
             <About />
           </Route>
           <Route path="/store" exact>
-            <Store />
+            {authCtx.isLoggedIn && <Store />}
+            {!authCtx.isLoggedIn && <Redirect to='/auth'/>}
           </Route>
           <Route path={`/store/products-details/:productId/:info`}>
             <ProductDetails />
