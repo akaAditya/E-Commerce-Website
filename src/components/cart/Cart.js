@@ -18,7 +18,10 @@ const Cart = (props) => {
             <Col>
               <Card>
                 <Card.Body>
-                  <Card.Img src={item.image} style={{width:'40px', height: '40px', }}/>
+                  <Card.Img
+                    src={item.image}
+                    style={{ width: "40px", height: "40px" }}
+                  />
                   <Card.Title>{item.name}</Card.Title>
                   <Card.Text>{item.price}</Card.Text>
                   <Card.Text>{item.amount}</Card.Text>
@@ -43,6 +46,8 @@ const Cart = (props) => {
         <Card>
           <Card.Body>
             <Card.Text>{cartItems}</Card.Text>
+          </Card.Body>
+          <Card.Body>
             <Card.Text>Total Amount</Card.Text>
             <Card.Text>{totalAmount}</Card.Text>
           </Card.Body>

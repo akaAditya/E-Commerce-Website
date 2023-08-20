@@ -7,7 +7,7 @@ import Home from "./components/homePage/Home";
 import CartProvider from "./store/CartProvider";
 import ContactUs from "./components/contactUs/ContactUs";
 import ProductDetails from "./components/main/ProductDetails";
-
+import AuthPage from "./components/Auth/AuthPage";
 
 // const AboutPageRouter = createBrowserRouter([
 //   { path: "/", element: <Home /> },
@@ -21,6 +21,9 @@ function App() {
       <CartProvider>
         <NavBar />
         <Switch>
+          <Route path='/auth'>
+            <AuthPage />
+          </Route>
           <Route path="/contact-us">
             <ContactUs />
           </Route>

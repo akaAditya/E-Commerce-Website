@@ -75,45 +75,17 @@ function NavBar(props) {
             >
               Contact-US
             </Link>
-          </Nav>
-
-          {/* <Nav
-            className="me-auto my-2 my-lg-0"
-            style={{ maxHeight: "100px" }}
-            navbarScroll
-          >
-            <NavLink
-              to="/"
+            <Link
+              to="/auth"
               style={{
-                color: "white",
+                color: "yellowgreen",
                 textDecoration: "none",
                 padding: "5px",
               }}
             >
-              Home
-            </NavLink>
-            <NavLink
-              to="/store"
-              style={{
-                color: "white",
-                textDecoration: "none",
-                padding: "5px",
-              }}
-            >
-              Store
-            </NavLink>
-            <NavLink
-              to="/about"
-              style={{
-                color: "white",
-                textDecoration: "none",
-                padding: "5px",
-              }}
-            >
-              About
-            </NavLink>
-          </Nav> */}
-          
+              Log In
+            </Link>
+          </Nav>          
           {isItemShow && <Cart onHide={hideCartItemHandler} />}
           <Button onClick={showCartItemHandler} variant="outline-success">
             Cart
