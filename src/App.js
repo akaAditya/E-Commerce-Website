@@ -4,12 +4,13 @@ import { Switch, Route } from "react-router-dom";
 import About from "./components/aboutUs/About";
 import Store from "./components/store/Store";
 import Home from "./components/homePage/Home";
-import CartProvider from "./store/CartProvider";
 import ContactUs from "./components/contactUs/ContactUs";
 import ProductDetails from "./components/main/ProductDetails";
 import AuthPage from "./components/Auth/AuthPage";
 import AuthContext from "./authContext/auth-context";
 import { Redirect } from "react-router-dom/cjs/react-router-dom.min";
+import Cart from "./components/cart/Cart";
+import CartProvider from "./cartStore/CartProvider";
 
 // const AboutPageRouter = createBrowserRouter([
 //   { path: "/", element: <Home /> },
@@ -24,7 +25,11 @@ function App() {
       <CartProvider>
         <NavBar />
         <Switch>
-          <Route path='/auth'>
+          <Route path="/cart">
+            {authCtx.isLoggedIn && <Cart />}
+            {!authCtx.isLoggedIn && <Redirect to="/auth" />}
+          </Route>
+          <Route path="/auth">
             <AuthPage />
           </Route>
           <Route path="/contact-us">
@@ -35,7 +40,7 @@ function App() {
           </Route>
           <Route path="/store" exact>
             {authCtx.isLoggedIn && <Store />}
-            {!authCtx.isLoggedIn && <Redirect to='/auth'/>}
+            {!authCtx.isLoggedIn && <Redirect to="/auth" />}
           </Route>
           <Route path={`/store/products-details/:productId/:info`}>
             <ProductDetails />

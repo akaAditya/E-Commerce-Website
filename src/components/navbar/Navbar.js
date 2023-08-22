@@ -1,30 +1,24 @@
-import React, { useState } from "react";
-import { useContext } from "react";
-import Button from "react-bootstrap/Button";
+import React from "react";
+// import { useContext } from "react";
 import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
-import CartContext from "../../store/cart-context";
+// import CartContext from "../../cartStore/cart-context";
 import { Link } from "react-router-dom";
-import Cart from "../cart/Cart";
 
-function NavBar(props) {
-  const cartContext = useContext(CartContext);
-  const [isItemShow, setIsItemShow] = useState(false);
+function NavBar() {
+  // const cartContext = useContext(CartContext);
 
-  const showCartItemHandler = () => {
-    setIsItemShow(true);
-  };
-
-  const hideCartItemHandler = () => {
-    setIsItemShow(false);
-  }
-
-  const numberOfCartItems = cartContext.items.reduce((curNumber, item) => {
-    return curNumber + item.amount;
-  }, 0);
+  // const numberOfCartItems = cartContext.items.reduce((curNumber, item) => {
+  //   return curNumber + item.amount;
+  // }, 0);
   return (
-    <Navbar className="navbar navbar-inverse navbar-fixed-top" bg="dark" expand="sm" variant="dark">
+    <Navbar
+      className="navbar navbar-inverse navbar-fixed-top"
+      bg="dark"
+      expand="sm"
+      variant="dark"
+    >
       <Container fluid>
         <Navbar.Brand href="#">JustSell</Navbar.Brand>
         <Navbar.Toggle aria-controls="navbarScroll" />
@@ -85,12 +79,18 @@ function NavBar(props) {
             >
               Log In
             </Link>
-          </Nav>          
-          {isItemShow && <Cart onHide={hideCartItemHandler} />}
-          <Button onClick={showCartItemHandler} variant="outline-success">
+          </Nav>
+          <Link
+            to="/cart"
+            style={{
+              color: "Yellow",
+              textDecoration: "none",
+              paddingRight: "10px",
+            }}
+          >
             Cart
-          </Button>
-          <span style={{ color: "white" }}>{numberOfCartItems}</span>
+          </Link>
+          {/* <span style={{ color: "white" }}>Q : {numberOfCartItems}</span> */}
         </Navbar.Collapse>
       </Container>
     </Navbar>

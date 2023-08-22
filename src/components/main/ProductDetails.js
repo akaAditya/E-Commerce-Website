@@ -5,7 +5,7 @@ import { NavLink } from "react-bootstrap";
 import image1 from "../../assets/images/image1.png";
 import image2 from "../../assets/images/image2.png";
 import image3 from "../../assets/images/image3.png";
-import './ProductDetails.css'
+import "./ProductDetails.css";
 
 const ProductDetails = (props) => {
   const params = useParams();
@@ -28,18 +28,18 @@ const ProductDetails = (props) => {
                   alt="Mens-Tshirt"
                 />
               </div>
-              <div class="d-flex justify-content-center mb-3">
+              <div className="d-flex justify-content-center mb-3">
                 <img
                   width="60"
                   height="60"
-                  class="rounded-2"
+                  className="rounded-2"
                   src={image2}
                   alt="Mens-Tshirt"
                 />
                 <img
                   width="60"
                   height="60"
-                  class="rounded-2"
+                  className="rounded-2"
                   src={image3}
                   alt="Mens-Tshirt"
                 />
@@ -139,50 +139,123 @@ const ProductDetails = (props) => {
                   </div>
                 </div>
                 <NavLink to="/" className="btn btn-warning shadow-0">
-                  {" "}
-                  Buy now{" "}
+                  Buy now
                 </NavLink>
                 <NavLink to="/" className="btn btn-primary shadow-0">
-                  {" "}
-                  <i className="me-1 fa fa-shopping-basket"></i> Add to cart{" "}
+                  <i className="me-1 fa fa-shopping-basket"></i> Add to cart
                 </NavLink>
                 <NavLink
                   to="/"
                   className="btn btn-light border border-secondary py-2 icon-hover px-3"
                 >
-                  {" "}
-                  <i className="me-1 fa fa-heart fa-lg"></i> Save{" "}
+                  <i className="me-1 fa fa-heart fa-lg"></i> Save
                 </NavLink>
               </div>
             </main>
           </div>
         </div>
-        <div class="container">
-    <div class="mgb-40 padb-30 auto-invert line-b-4 align-center">
-        <h4 class="font-cond-l fg-accent lts-md mgb-10" contenteditable="false">Not Yet Convinced?</h4>
-        <h1 class="font-cond-b fg-text-d lts-md fs-300 fs-300-xs no-mg" contenteditable="false">Read Customer Reviews</h1>
-    </div>
-    <ul class="hash-list cols-3 cols-1-xs pad-30-all align-center text-sm">
-        <li>
-          <img src="https://bootdey.com/img/Content/avatar/avatar1.png" class="wpx-100 img-round mgb-20" title="" alt="" data-edit="false" data-editor="field" data-field="src[Image Path]; title[Image Title]; alt[Image Alternate Text]"/>
-          <p class="fs-110 font-cond-l" contenteditable="false">" Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae. "</p>
-          <h5 class="font-cond mgb-5 fg-text-d fs-130" contenteditable="false">Martha Stewart</h5>
-          <small class="font-cond case-u lts-sm fs-80 fg-text-l" contenteditable="false">Business Woman - New York</small>
-        </li>
-        <li>
-          <img src="https://bootdey.com/img/Content/avatar/avatar4.png" class="wpx-100 img-round mgb-20" title="" alt="" data-edit="false" data-editor="field" data-field="src[Image Path]; title[Image Title]; alt[Image Alternate Text]"/>
-          <p class="fs-110 font-cond-l" contenteditable="false">" Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae. "</p>
-          <h5 class="font-cond mgb-5 fg-text-d fs-130" contenteditable="false">Ariana Menage</h5>
-          <small class="font-cond case-u lts-sm fs-80 fg-text-l" contenteditable="false">Recording Artist - Los Angeles</small>
-        </li>
-        <li>
-          <img src="https://bootdey.com/img/Content/avatar/avatar5.png" class="wpx-100 img-round mgb-20" title="" alt="" data-edit="false" data-editor="field" data-field="src[Image Path]; title[Image Title]; alt[Image Alternate Text]"/>
-          <p class="fs-110 font-cond-l" contenteditable="false">" Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae. "</p>
-          <h5 class="font-cond mgb-5 fg-text-d fs-130" contenteditable="false">Sean Carter</h5>
-          <small class="font-cond case-u lts-sm fs-80 fg-text-l" contenteditable="false">Fund Manager - Chicago</small>
-        </li>
-      </ul>
-</div>
+        <div className="container">
+          <div className="mgb-40 padb-30 auto-invert line-b-4 align-center">
+            <h4
+              className="font-cond-l fg-accent lts-md mgb-10"
+              contenteditable="false"
+            >
+              Not Yet Convinced?
+            </h4>
+            <h1
+              className="font-cond-b fg-text-d lts-md fs-300 fs-300-xs no-mg"
+              contenteditable="false"
+            >
+              Read Customer Reviews
+            </h1>
+          </div>
+          <ul className="hash-list cols-3 cols-1-xs pad-30-all align-center text-sm">
+            <li>
+              <img
+                src="https://bootdey.com/img/Content/avatar/avatar1.png"
+                className="wpx-100 img-round mgb-20"
+                title=""
+                alt=""
+                data-edit="false"
+                data-editor="field"
+                data-field="src[Image Path]; title[Image Title]; alt[Image Alternate Text]"
+              />
+              <p className="fs-110 font-cond-l" contenteditable="false">
+                " Sed ut perspiciatis unde omnis iste natus error sit voluptatem
+                accusantium doloremque laudantium, totam rem aperiam, eaque ipsa
+                quae. "
+              </p>
+              <h5
+                className="font-cond mgb-5 fg-text-d fs-130"
+                contenteditable="false"
+              >
+                Martha Stewart
+              </h5>
+              <small
+                className="font-cond case-u lts-sm fs-80 fg-text-l"
+                contenteditable="false"
+              >
+                Business Woman - New York
+              </small>
+            </li>
+            <li>
+              <img
+                src="https://bootdey.com/img/Content/avatar/avatar4.png"
+                className="wpx-100 img-round mgb-20"
+                title=""
+                alt=""
+                data-edit="false"
+                data-editor="field"
+                data-field="src[Image Path]; title[Image Title]; alt[Image Alternate Text]"
+              />
+              <p className="fs-110 font-cond-l" contenteditable="false">
+                " Sed ut perspiciatis unde omnis iste natus error sit voluptatem
+                accusantium doloremque laudantium, totam rem aperiam, eaque ipsa
+                quae. "
+              </p>
+              <h5
+                className="font-cond mgb-5 fg-text-d fs-130"
+                contenteditable="false"
+              >
+                Ariana Menage
+              </h5>
+              <small
+                className="font-cond case-u lts-sm fs-80 fg-text-l"
+                contenteditable="false"
+              >
+                Recording Artist - Los Angeles
+              </small>
+            </li>
+            <li>
+              <img
+                src="https://bootdey.com/img/Content/avatar/avatar5.png"
+                className="wpx-100 img-round mgb-20"
+                title=""
+                alt=""
+                data-edit="false"
+                data-editor="field"
+                data-field="src[Image Path]; title[Image Title]; alt[Image Alternate Text]"
+              />
+              <p className="fs-110 font-cond-l" contenteditable="false">
+                " Sed ut perspiciatis unde omnis iste natus error sit voluptatem
+                accusantium doloremque laudantium, totam rem aperiam, eaque ipsa
+                quae. "
+              </p>
+              <h5
+                className="font-cond mgb-5 fg-text-d fs-130"
+                contenteditable="false"
+              >
+                Sean Carter
+              </h5>
+              <small
+                className="font-cond case-u lts-sm fs-80 fg-text-l"
+                contenteditable="false"
+              >
+                Fund Manager - Chicago
+              </small>
+            </li>
+          </ul>
+        </div>
       </section>
       <Route path={`/products-details/${params.productId}/${params.info}`}>
         <ProductInfo />

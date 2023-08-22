@@ -2,8 +2,10 @@ import React, {useState} from 'react'
 import AuthContext from './auth-context'
 
 const AuthProvider = (props) => {
-    const initialLocalStorage = localStorage.getItem('token')
-    const [token, setToken] = useState(initialLocalStorage);
+    const initialTokenLocalStorage = localStorage.getItem('token')
+    const initialEmailLocalStorage = localStorage.getItem('email')
+    const [token, setToken] = useState(initialTokenLocalStorage);
+    const [email, setEmail] = useState(initialEmailLocalStorage);
     const userIsLoggedIn = !!token
 
     const loginHandler =(token)=>{
@@ -13,10 +15,17 @@ const AuthProvider = (props) => {
     const logoutHandler = ()=>{
         setToken(null)
         localStorage.removeItem('token')
+        localStorage.removeItem('email')
+    }
+    const emailHandler = (email) => {
+        setEmail(email)
+        localStorage.setItem('email', email)
     }
 
     const authContext = {
         token : token,
+        email : email,
+        emailStore : emailHandler,
         isLoggedIn : userIsLoggedIn,
         login : loginHandler,
         logout : logoutHandler

@@ -12,7 +12,7 @@ const AuthForm = () => {
 
   const emailHandler = useRef();
   const passwordHandler = useRef();
-
+  
   const switchAuthModeHandler = () => {
     setIsLogin((prevState) => !prevState);
   };
@@ -21,6 +21,8 @@ const AuthForm = () => {
     event.preventDefault();
     const eneteredEmail = emailHandler.current.value;
     const eneteredPasswrod = passwordHandler.current.value;
+    // const saveEmailToLocalStorage = eneteredEmail
+    
     setIsLoading(true);
     let url;
     if (isLogin) {
@@ -56,7 +58,8 @@ const AuthForm = () => {
         }
       })
       .then((data) => {
-        authCtx.login(data.idToken);
+        authCtx.login(data.idToken)
+        authCtx.emailStore(data.email)
         history.replace('/store')
       })
       .catch((err) => {
@@ -74,7 +77,7 @@ const AuthForm = () => {
         </div>
         <div className={classes.control}>
           <label htmlFor="password">Your Password</label>
-          <input type="password" id="password" minLength='7' required ref={passwordHandler} />
+          <input type="password" id="password" minLength='5' required ref={passwordHandler} />
         </div>
         <div className={classes.actions}>
           {!isLoading && (

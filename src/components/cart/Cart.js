@@ -1,63 +1,63 @@
-import React from "react";
-import { Button, Card, Col, Container, Row } from "react-bootstrap";
-import Modal from "../UI/Modal";
-import { useContext } from "react";
-import CartContext from "../../store/cart-context";
+import React, { useContext, useEffect } from "react";
+import CartContext from "../../cartStore/cart-context";
+import AuthContext from "../../authContext/auth-context";
 
-const Cart = (props) => {
+const Cart = () => {
   const cartContext = useContext(CartContext);
-  const totalAmount = `$${cartContext.totalAmount.toFixed(2)}`;
-  const cartItemAddHandler = (item) => {
-    cartContext.addItems({ ...item, amount: 1 });
+  const authContext = useContext(AuthContext);
+  const email = authContext.email;
+  const removeAt = email.replace("@", "");
+  const removeDot = removeAt.replace(".", "");
+  const finalEmail = removeDot;
+  console.log(finalEmail, "Email from cart");
+
+  const removeCartItemHandler = (id) => {
+    cartContext.removeItem(id);
   };
-  const cartItems = (
-    <Container className="d-flex justify-content-sm-between mt-5">
-      {cartContext.items.map((item) => {
-        return (
-          <Row>
-            <Col>
-              <Card>
-                <Card.Body>
-                  <Card.Img
-                    src={item.image}
-                    style={{ width: "40px", height: "40px" }}
-                  />
-                  <Card.Title>{item.name}</Card.Title>
-                  <Card.Text>{item.price}</Card.Text>
-                  <Card.Text>{item.amount}</Card.Text>
-                  {/* <Button onClick={cartItemAddHandler.bind(null, item.id)}>
-                    +
-                  </Button> */}
-                  <button onClick={cartItemAddHandler.bind(null, item.id)}>
-                    +
-                  </button>
-                </Card.Body>
-              </Card>
-            </Col>
-          </Row>
-        );
-      })}
-    </Container>
-  );
+
+  useEffect(() => {
+    fetch(
+      `https://crudcrud.com/api/86faae61f8894cde8d201df788e91e17/cartItems${finalEmail}`,
+      {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    )
+      .then((res) => res.json())
+      .then((json) => {
+        cartContext.addItem(json);
+      });
+  }, []);
 
   return (
-    <Modal onHide={props.onHide}>
-      <Container>
-        <Card>
-          <Card.Body>
-            <Card.Text>{cartItems}</Card.Text>
-          </Card.Body>
-          <Card.Body>
-            <Card.Text>Total Amount</Card.Text>
-            <Card.Text>{totalAmount}</Card.Text>
-          </Card.Body>
-        </Card>
-      </Container>
+    <div>
+      <h2 style={{ marginLeft: "45%" }}>My Cart</h2>
+      <div className="container d-flex">
+        {cartContext.items.map((item) => (
+          <div
+            className="card"
+            style={{ width: "10rem", margin: "1rem" }}
+            key={item.id}
+          >
+            <img src={item.image} className="card-img-top" alt="product" />
+            <div className="card-body">
+              <h5 className="card-title">{item.name}</h5>
+              <p className="card-text">{item.price}</p>
+              <p className="card-text">{item.amount}</p>
 
-      {/* <span>Total Amount</span>
-      <span>{totalAmount}</span> */}
-      <Button onClick={props.onHide}>Close</Button>
-    </Modal>
+              <button
+                className="btn btn-sm btn-danger"
+                onClick={removeCartItemHandler.bind(null, item.id)}
+              >
+                Remove
+              </button>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
   );
 };
 
